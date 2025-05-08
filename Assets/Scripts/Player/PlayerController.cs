@@ -1,7 +1,6 @@
-using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(PlayerStats))]
 public class PlayerController : MonoBehaviour
 {
     // inspector fields
