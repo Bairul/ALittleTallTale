@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PlayerAnimate : MonoBehaviour
 {
-    public Animator animator;
-    public int horizontal;
-    public int vertical;
+    [HideInInspector] public Animator animator;
+    [HideInInspector] public int horizontal;
+    [HideInInspector] public int vertical;
 
-    // Update is called once per frame
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     void Update()
     {
         animator.SetInteger("Vertical", vertical);

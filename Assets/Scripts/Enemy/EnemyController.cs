@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
 
     private Rigidbody2D rgbd2d;
     private EnemyStats enemyStats;
+    private Transform player;
 
     private Vector2 mvt;
     private bool canAttack;
@@ -20,12 +21,23 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        player = PlayerManager.Instance.transform;
         canAttack = true;
     }
 
     void Update()
     {
-        
+        mvt = player.position - transform.position;
+        animate.vertical = (int) mvt.y;
+        animate.horizontal = (int) mvt.x;
+    }
+
+    void FixedUpdate()
+    {
+        if (!animate.attack) // Don't move when playing attack animation
+        {
+            rgbd2d.velocity = mvt.normalized * enemyStats.currentMovementSpeed;
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision)
