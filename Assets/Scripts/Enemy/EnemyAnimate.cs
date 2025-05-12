@@ -8,7 +8,7 @@ public class EnemyAnimate : MonoBehaviour
 
     [HideInInspector] public int vertical;
     
-    [HideInInspector] public bool attack;
+    public bool attack;
 
     void Awake()
     {
@@ -19,6 +19,7 @@ public class EnemyAnimate : MonoBehaviour
     {
         animator.SetInteger("Horizontal", horizontal);
         animator.SetInteger("Vertical", vertical);
+        animator.SetBool("Attack", attack);
     }
 
     void FinishAttackAnimation() {
