@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class EnemyStats : LivingEntityStats
 {
     private EnemyStatsScriptableObject enemStats;
@@ -15,10 +11,7 @@ public class EnemyStats : LivingEntityStats
 
     public void TakeDamage(AttackData attackData) 
     {
-        float damage = attackData.totalDamage;
-        // damageIndicator.isCrit = damage > attackData.damage;
-
-        // damage *= GameWorld.Instance.GetElementalDamageModifier(attackData.element, baseStats.EnemyType);
+        float damage = attackData.totalDamage * GameWorld.Instance.GetElementalDamageModifier(attackData.element, enemStats.EnemyType);
         TakeDamage(damage);
     }
 

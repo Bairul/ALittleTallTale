@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc168d134c3b6744a8bf41605afc660, type: 3}
   m_Name: AttackStatsScriptableObject
   m_EditorClassIdentifier: 
-  attackName: Arcane Ball
+  skillName: Arcane Bolt
+  skillType: 2
   skillPrefab: {fileID: 3863563588811917912, guid: 8a371b7aa66b6834eb865e3983d26be0, type: 3}
-  elementalType: 0
-  skillType: 0
+  elementalType: 1
   attackType: 0
   attackTargetType: 0
   attackDamage: 2

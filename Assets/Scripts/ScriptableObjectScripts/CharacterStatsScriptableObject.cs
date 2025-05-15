@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static AllEnums;
 
 [CreateAssetMenu(fileName ="CharacterStatsScriptableObject", menuName ="ScriptableObjects/Character")]
 public class CharacterStatsScriptableObject : LivingEntityStatsScriptableObject
@@ -17,6 +18,11 @@ public class CharacterStatsScriptableObject : LivingEntityStatsScriptableObject
     private float magnetRange;
     public float MagnetRange { get => magnetRange; private set => magnetRange = value; }
 
+    [Header("Skills")]
+    [SerializeField]
+    private ElementalType[] elementalAffinities;
+    public ElementalType[] ElementalAffinities { get => elementalAffinities; }
+
     [Header("Leveling")]
     [SerializeField]
     private int maxLevel;
@@ -25,9 +31,4 @@ public class CharacterStatsScriptableObject : LivingEntityStatsScriptableObject
     [SerializeField]
     private List<LevelRange> levelRanges;
     public List<LevelRange> LevelRanges { get => levelRanges; }
-
-    // [Header("Skills")]
-    // [SerializeField]
-    // private ElementalType[] elementalAffinities;
-    // public ElementalType[] ElementalAffinities { get => elementalAffinities; }
 }

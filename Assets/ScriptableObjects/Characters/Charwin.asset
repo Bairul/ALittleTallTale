@@ -20,6 +20,7 @@ MonoBehaviour:
   critRate: 0.5
   critDamage: 2
   magnetRange: 5
+  elementalAffinities: 01000000020000000300000004000000
   maxLevel: 5
   levelRanges:
   - maxLevel: 3

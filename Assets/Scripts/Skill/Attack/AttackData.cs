@@ -18,7 +18,7 @@ public class AttackData
     {
         rawDamage = playerStats.currentDamage + attackStats.currentDamage;
         totalDamage = rawDamage * (Random.value < critRate ? critDmg : 1);
-        isCrit = rawDamage != totalDamage;
+        isCrit = totalDamage > rawDamage;
         critRate = playerStats.currentCritRate;
         critDmg = playerStats.currentCritDmg;
 

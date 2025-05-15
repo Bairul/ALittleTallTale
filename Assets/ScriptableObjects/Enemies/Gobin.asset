@@ -17,3 +17,4 @@ MonoBehaviour:
   movementSpeed: 2
   attackSpeed: 1
   iFrameDuration: 0.2
+  enemyType: 2

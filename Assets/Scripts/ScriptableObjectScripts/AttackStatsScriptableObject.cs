@@ -2,11 +2,8 @@ using UnityEngine;
 using static AllEnums;
 
 [CreateAssetMenu(fileName ="AttackStatsScriptableObject", menuName ="ScriptableObjects/Attack")]
-public class AttackStatsScriptableObject : ScriptableObject
+public class AttackStatsScriptableObject : SkillStatsScriptableObject
 {
-    [SerializeField]
-    private string attackName;
-    public string AttackName { get => attackName; private set => attackName = value; }
 
     [SerializeField]
     private GameObject skillPrefab;
@@ -15,10 +12,6 @@ public class AttackStatsScriptableObject : ScriptableObject
     [SerializeField]
     private ElementalType elementalType;
     public ElementalType ElementalType { get => elementalType; private set => elementalType = value; }
-
-    [SerializeField]
-    private SkillType skillType;
-    public SkillType SkillType { get => skillType; private set => skillType = value; }
 
     [SerializeField]
     private AttackType attackType;
