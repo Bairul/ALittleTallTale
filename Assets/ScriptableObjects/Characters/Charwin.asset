@@ -16,7 +16,7 @@ MonoBehaviour:
   strength: 1
   movementSpeed: 4
   attackSpeed: 1
-  iFrameDuration: 0.2
+  iFrameDuration: 0.25
   critRate: 0.5
   critDamage: 2
   magnetRange: 5

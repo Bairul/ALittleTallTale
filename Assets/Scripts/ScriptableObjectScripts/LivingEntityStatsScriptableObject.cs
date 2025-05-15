@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StatsScriptableObject : ScriptableObject
+public class LivingEntityStatsScriptableObject : ScriptableObject
 {
     [Header("Base Stats")]
     [SerializeField]

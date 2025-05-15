@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="CharacterStatsScriptableObject", menuName ="ScriptableObjects/Character")]
-public class CharacterStatsScriptableObject : StatsScriptableObject
+public class CharacterStatsScriptableObject : LivingEntityStatsScriptableObject
 {
     [Range(0,1)]
     [SerializeField]

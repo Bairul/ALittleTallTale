@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public abstract class ActiveStats : MonoBehaviour
+public abstract class LivingEntityStats : MonoBehaviour
 {
-    [SerializeField] protected StatsScriptableObject stats;
+    [SerializeField] protected LivingEntityStatsScriptableObject stats;
 
     // iframe
     [SerializeField] private ImmunityFlash immunityFlash;
@@ -11,7 +11,7 @@ public abstract class ActiveStats : MonoBehaviour
 
     // current stats (make sure to hide in inspector later)
     [HideInInspector] public float currentMaxHealth;
-    public float currentHealth;
+    [HideInInspector] public float currentHealth;
     [HideInInspector] public float currentMovementSpeed;
     [HideInInspector] public float currentDamage;
     [HideInInspector] public float currentAttackSpeed;

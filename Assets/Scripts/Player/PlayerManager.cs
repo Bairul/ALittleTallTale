@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
+    private PlayerStats playerStats;
+    public PlayerStats Stats { get => playerStats; private set => playerStats = value; }
 
     private void Awake()
     {
@@ -14,6 +16,7 @@ public class PlayerManager : MonoBehaviour
         else
         {
             Instance = this;
+            playerStats = GetComponent<PlayerStats>();
         }
     }
 }

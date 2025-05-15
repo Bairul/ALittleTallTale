@@ -30,6 +30,8 @@ public class EnemyController : MonoBehaviour
         mvt = player.position - transform.position;
         animate.vertical = (int) mvt.y;
         animate.horizontal = (int) mvt.x;
+
+        enemyStats.CheckIFrame();
     }
 
     void FixedUpdate()

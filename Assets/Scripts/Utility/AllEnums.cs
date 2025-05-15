@@ -11,11 +11,26 @@ public class AllEnums : MonoBehaviour
         Wind,
     }
 
-    public enum SkillOfType
+    public enum SkillType
     {
         Bloodline,
         Attribue,
         Elemental
+    }
+
+    public enum AttackType
+    {
+        Automatic,
+        Active
+    }
+
+    public enum AttackTargetType
+    {
+        Mouse,
+        NearestTargets,
+        RandomTargets,
+        WalkDirection,
+        Other
     }
 
     public enum EnemyType

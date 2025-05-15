@@ -7,21 +7,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private PlayerAnimate animate;
 
     // private fields
+    private PlayerStats playerStats;
     private Rigidbody2D rgbd2d;
     private Vector2 mvt;
 
     public bool canMove;
-    public bool isFacingRight;
 
     // Awake is called before Start. Frequently used to get internal components and initialize fields
     void Awake()
     {
         rgbd2d = GetComponent<Rigidbody2D>();
+        playerStats = GetComponent<PlayerStats>();
 
         canMove = true;
     }
 
-    // Start is used when referencing other objects and their components or after Awake
+    // Start is used when referencing other game objects and their components or just after Awake
     void Start()
     {
         
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerMovement();
+        playerStats.CheckIFrame();
     }
 
     // FixedUpdate is called at fixed intervals

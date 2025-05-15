@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStats : ActiveStats
+public class PlayerStats : LivingEntityStats
 {
     private CharacterStatsScriptableObject charStats;
-    public CharacterStatsScriptableObject CharStats { get => charStats; }
+    public CharacterStatsScriptableObject CharStats { get => charStats; private set => charStats = value;}
 
     [HideInInspector] public float currentMagnetRange;
     [HideInInspector] public float currentCritRate;
     [HideInInspector] public float currentCritDmg;
 
     // Experience
-    public int currentExperience;
+    private int currentExperience;
     private int currentExperienceCap;
-    public int currentLevel = 1;
+    private int currentLevel = 1;
     private int currentRangeIndex = 0;
 
     protected override void Awake()
