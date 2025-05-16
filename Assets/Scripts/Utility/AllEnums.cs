@@ -49,4 +49,12 @@ public class AllEnums : MonoBehaviour
         Armored,
         Flesh
     }
+
+    public enum CollectibleType
+    {
+        Health,
+        Experience,
+        Coin,
+        Powerup
+    }
 }

@@ -56,7 +56,7 @@ public class PlayerInventory : MonoBehaviour
         List<WeightedObject> copy = new();
         foreach (WeightedObject weightedObject in availableSkills)
         {
-            copy.Add(new WeightedObject(weightedObject.prefab, weightedObject.weight));
+            copy.Add(new WeightedObject(weightedObject.item, weightedObject.weight));
         }
         return copy;
     }
@@ -77,13 +77,14 @@ public class PlayerInventory : MonoBehaviour
         {
             WeightedObject obj = WeightedObject.GetRandomWeightedObject(copy);
 
-            if (obj != null && obj.prefab != null)
+            if (obj != null && obj.item != null)
             {
                 copy.Remove(obj);
                 WeightedObject.NormalizeWeights(copy);
-                Debug.Log(obj.prefab.SkillName);
 
-                skills.Add(obj.prefab);
+                SkillStatsScriptableObject skill = (SkillStatsScriptableObject) obj.item;
+                Debug.Log(skill.SkillName);
+                skills.Add(skill);
             }
         }
 
@@ -102,8 +103,8 @@ public class PlayerInventory : MonoBehaviour
     {
         foreach (WeightedObject weightedObject in availableSkills)
         {
-            if (weightedObject.prefab.SkillType == SkillType.Elemental) {
-                if (((AttackStatsScriptableObject) weightedObject.prefab).ElementalType == type)
+            if (((SkillStatsScriptableObject) weightedObject.item).SkillType == SkillType.Elemental) {
+                if (((AttackStatsScriptableObject) weightedObject.item).ElementalType == type)
                 {
                     weightedObject.weight *= percentageChange;
                 }
@@ -117,7 +118,7 @@ public class PlayerInventory : MonoBehaviour
     {
         foreach (WeightedObject weightedObject in availableSkills)
         {
-            if (weightedObject.prefab.SkillName.Equals(skillName))
+            if (((SkillStatsScriptableObject) weightedObject.item).SkillName.Equals(skillName))
             {
                 weightedObject.weight *= percentageChange;
             }

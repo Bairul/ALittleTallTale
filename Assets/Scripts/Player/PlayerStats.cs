@@ -5,9 +5,12 @@ public class PlayerStats : LivingEntityStats
     private CharacterStatsScriptableObject charStats;
     public CharacterStatsScriptableObject CharStats { get => charStats; private set => charStats = value;}
 
-    [HideInInspector] public float currentMagnetRange;
     [HideInInspector] public float currentCritRate;
     [HideInInspector] public float currentCritDmg;
+
+    // Magnet
+    [SerializeField] private PlayerMagnet playerMagnet;
+    [HideInInspector] public float currentMagnetRange;
 
     // Experience
     private int currentExperience;
@@ -20,7 +23,6 @@ public class PlayerStats : LivingEntityStats
         base.Awake();
         charStats = (CharacterStatsScriptableObject) stats;
 
-        currentMagnetRange = charStats.MagnetRange;
         currentCritRate = charStats.CritRate;
         currentCritDmg = charStats.CritDamage;
     }
@@ -28,13 +30,13 @@ public class PlayerStats : LivingEntityStats
     void Start()
     {
         UpdateExperienceCap();
-        UpdateMagnetRange(currentMagnetRange);
+        UpdateMagnetRange(charStats.MagnetRange);
     }
 
     public void UpdateMagnetRange(float radius)
     {
         currentMagnetRange = radius;
-        // playerMagnet.Range.radius = currentMagnetRange;
+        playerMagnet.Range.radius = currentMagnetRange;
     }
 
     void LevelUp()

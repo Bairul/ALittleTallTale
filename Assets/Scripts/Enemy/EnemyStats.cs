@@ -4,23 +4,27 @@ public class EnemyStats : LivingEntityStats
     public EnemyStatsScriptableObject EnemStats {get => enemStats;}
 
     private DamageIndicator damageIndicator;
+    private LootTable lootTable;
 
     protected override void Awake()
     {
         base.Awake();
         enemStats = (EnemyStatsScriptableObject) stats;
         damageIndicator = GetComponent<DamageIndicator>();
+        lootTable = GetComponent<LootTable>();
     }
 
-    public void TakeDamage(AttackData attackData) 
+    protected override void DamageTaken(AttackData attackData)
     {
-        float damage = attackData.totalDamage * GameWorld.Instance.GetElementalDamageModifier(attackData.element, enemStats.EnemyType);
-        TakeDamage(damage);
-        damageIndicator.ShowDamage(damage, attackData.isCrit);
+        base.DamageTaken(attackData);
+        float elementalDamage = attackData.totalDamage * GameWorld.Instance.GetElementalDamageModifier(attackData.element, enemStats.EnemyType);
+        DamageTaken(elementalDamage - attackData.totalDamage);
+        damageIndicator.ShowDamage(elementalDamage, attackData.isCrit);
     }
 
     protected override void Kill()
     {
         Destroy(gameObject);
+        lootTable.DropLoot();
     }
 }

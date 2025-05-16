@@ -42,12 +42,8 @@ public abstract class LivingEntityStats : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage) 
+    private void CheckHealth()
     {
-        if (isInvincible) return;
-        
-        DamageTaken(damage);
-
         if (currentHealth <= 0) 
         {
             Kill();
@@ -60,9 +56,30 @@ public abstract class LivingEntityStats : MonoBehaviour
         }
     }
 
+    public void TakeDamage(float damage) 
+    {
+        if (isInvincible) return;
+        
+        DamageTaken(damage);
+        CheckHealth();
+    }
+
+    public void TakeDamage(AttackData attackData) 
+    {
+        if (isInvincible) return;
+        
+        DamageTaken(attackData);
+        CheckHealth();
+    }
+
     protected virtual void DamageTaken(float damage)
     {
         currentHealth -= damage;
+    }
+
+    protected virtual void DamageTaken(AttackData attackData)
+    {
+        currentHealth -= attackData.totalDamage;
     }
 
     protected abstract void Kill();

@@ -53,11 +53,11 @@ public class AttackStats : MonoBehaviour
 
     private void LaunchAttack()
     {
-        GameObject atk = Instantiate(attackStats.SkillPrefab, transform.position, Quaternion.identity);
+        GameObject atkInstance = Instantiate(attackStats.SkillPrefab, transform.position, Quaternion.identity);
         // attach a behavior to the instance
         AttackBehavior ab = attackStats.AttackTargetType switch
         {
-            AttackTargetType.Mouse => atk.AddComponent<AimAtMouseBehavior>(),
+            AttackTargetType.Mouse => atkInstance.AddComponent<AimAtMouseBehavior>(),
             AttackTargetType.NearestTargets => null,
             AttackTargetType.RandomTargets => null,
             AttackTargetType.WalkDirection => null,

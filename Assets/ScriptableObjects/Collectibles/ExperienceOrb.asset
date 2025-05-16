@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf848c5b7d2c82743ac59907c0d2219a, type: 3}
-  m_Name: Gobin
+  m_Script: {fileID: 11500000, guid: 4d54f6293a1bdad48b6db7f21216c4a6, type: 3}
+  m_Name: ExperienceOrb
   m_EditorClassIdentifier: 
-  health: 100
-  strength: 2
-  movementSpeed: 2
-  attackSpeed: 1
-  iFrameDuration: 0.2
-  enemyType: 2
+  collectibleType: 1
+  collectiblePrefab: {fileID: 5931368817220886842, guid: 7e45f70c8c55d8f4180bd28940752373, type: 3}
+  collectibleValue: 1
+  pullSpeed: 4

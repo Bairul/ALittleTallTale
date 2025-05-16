@@ -5,12 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class WeightedObject
 {
-    public SkillStatsScriptableObject prefab;
+    public ScriptableObject item;
     public float weight;
 
-    public WeightedObject(SkillStatsScriptableObject prefab, float weight)
+    public WeightedObject(ScriptableObject item, float weight)
     {
-        this.prefab = prefab;
+        this.item = item;
         this.weight = weight;
     }
 
@@ -37,9 +37,9 @@ public class WeightedObject
 
         // Calculate the total weight of all loot items. If normalized, this should be 1
         float totalWeight = 0;
-        foreach (WeightedObject obj in list)
+        foreach (WeightedObject item in list)
         {
-            totalWeight += obj.weight;
+            totalWeight += item.weight;
         }
 
         // Generate a random number from 0 to totalWeight
@@ -47,12 +47,12 @@ public class WeightedObject
         float cumulativeWeight = 0;
 
         // Select the object based on the random weight
-        foreach (WeightedObject obj in list)
+        foreach (WeightedObject item in list)
         {
-            cumulativeWeight += obj.weight;
+            cumulativeWeight += item.weight;
             if (randomValue < cumulativeWeight)
             {
-                return obj;
+                return item;
             }
         }
 

@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf848c5b7d2c82743ac59907c0d2219a, type: 3}
-  m_Name: Gobin
+  m_Script: {fileID: 11500000, guid: 4d54f6293a1bdad48b6db7f21216c4a6, type: 3}
+  m_Name: HealthOrb
   m_EditorClassIdentifier: 
-  health: 100
-  strength: 2
-  movementSpeed: 2
-  attackSpeed: 1
-  iFrameDuration: 0.2
-  enemyType: 2
+  collectibleType: 0
+  collectiblePrefab: {fileID: 8319967895206709149, guid: 9286e530ad95cef498a2ac370b1060f5, type: 3}
+  collectibleValue: 10
+  pullSpeed: 4
