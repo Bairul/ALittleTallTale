@@ -3,7 +3,6 @@ using static AllEnums;
 
 public class AttackStats : MonoBehaviour
 {
-    [SerializeField]
     private AttackStatsScriptableObject attackStats;
     public AttackStatsScriptableObject AtkStats { get => attackStats; set => attackStats = value; }
 

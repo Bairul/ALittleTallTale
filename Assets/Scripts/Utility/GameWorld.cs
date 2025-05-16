@@ -12,6 +12,10 @@ public class GameWorld : MonoBehaviour
     private AttackStatsScriptableObject[] allAttackSkills;
     public AttackStatsScriptableObject[] AllAttackSkills  { get => allAttackSkills ; private set => allAttackSkills  = value; }
 
+    [SerializeField]
+    private AttributeStatsScriptableObject[] allAttributeSkills;
+    public AttributeStatsScriptableObject[] AllAttributeSkills  { get => allAttributeSkills ; private set => allAttributeSkills  = value; }
+
     // elemental damage bonus
     [Range(0,1)] [SerializeField] private float elementalDamageBonus;
 

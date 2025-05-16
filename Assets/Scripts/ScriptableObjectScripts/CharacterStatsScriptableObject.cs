@@ -10,6 +10,7 @@ public class CharacterStatsScriptableObject : LivingEntityStatsScriptableObject
     private float critRate;
     public float CritRate { get => critRate; private set => critRate = value; }
 
+    [Range(1,5)]
     [SerializeField]
     private float critDamage;
     public float CritDamage { get => critDamage; private set => critDamage = value; }

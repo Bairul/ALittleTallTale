@@ -11,6 +11,7 @@ public class PlayerInventory : MonoBehaviour
     public List<GameObject> starterSlots;
 
     public List<WeightedObject> availableSkills;
+    private PlayerStats playerStats;
 
     void Awake()
     {
@@ -28,7 +29,9 @@ public class PlayerInventory : MonoBehaviour
     /// </summary>
     void Start()
     {
-        ElementalType[] elementalAffinities = GetComponentInParent<PlayerStats>().CharStats.ElementalAffinities;
+        playerStats = GetComponentInParent<PlayerStats>();
+
+        ElementalType[] elementalAffinities = playerStats.CharStats.ElementalAffinities;
         availableSkills = new List<WeightedObject>();
 
         foreach (AttackStatsScriptableObject skill in GameWorld.Instance.AllAttackSkills) {
@@ -40,10 +43,10 @@ public class PlayerInventory : MonoBehaviour
         }
 
         // add attribues
-        // foreach (GameObject skillObject in allAttributeSkills)
-        // {
-        //     availableSkills.Add(new WeightedObject(skillObject, 1));
-        // }
+        foreach (AttributeStatsScriptableObject skill in GameWorld.Instance.AllAttributeSkills)
+        {
+            availableSkills.Add(new WeightedObject(skill, 1));
+        }
 
         // add bloodline here
     }
@@ -78,7 +81,7 @@ public class PlayerInventory : MonoBehaviour
             {
                 copy.Remove(obj);
                 WeightedObject.NormalizeWeights(copy);
-                Debug.Log(obj.prefab.name);
+                Debug.Log(obj.prefab.SkillName);
 
                 skills.Add(obj.prefab);
             }
@@ -123,21 +126,43 @@ public class PlayerInventory : MonoBehaviour
         WeightedObject.NormalizeWeights(availableSkills);
     }
 
-    public bool AddAttackSkill(AttackStatsScriptableObject newAttackStats)
+    public bool AddSkill(SkillStatsScriptableObject skill)
     {
         // Check if already owned
 
         // Add new skill if there's room
-        if (attackSlots.Count < maxSkillSlots)
+        if (skill.SkillType == SkillType.Elemental)
         {
-            GameObject skillObj = new(newAttackStats.SkillName);
-            skillObj.transform.SetParent(transform);
-            
-            AttackStats atkStatsInstance = skillObj.AddComponent<AttackStats>();
-            atkStatsInstance.AtkStats = newAttackStats;
+            if (attackSlots.Count < maxSkillSlots)
+            {
+                AttackStatsScriptableObject attackSkill = (AttackStatsScriptableObject) skill;
 
-            attackSlots.Add(skillObj);
-            return true;
+                GameObject skillObj = new(attackSkill.SkillName);
+                skillObj.transform.SetParent(transform, worldPositionStays: false);
+                
+                AttackStats atkStatsInstance = skillObj.AddComponent<AttackStats>();
+                atkStatsInstance.AtkStats = attackSkill;
+
+                attackSlots.Add(skillObj);
+                return true;
+            }
+        }
+        else if (skill.SkillType == SkillType.Attribue)
+        {
+            if (attributeSlots.Count < maxSkillSlots)
+            {
+                AttributeStatsScriptableObject attributeSkill = (AttributeStatsScriptableObject) skill;
+
+                GameObject skillObj = new(attributeSkill.SkillName);
+                skillObj.transform.SetParent(transform, worldPositionStays: false);
+                
+                AttributeStats atriStatsInstance = skillObj.AddComponent<AttributeStats>();
+                atriStatsInstance.AttriStats = attributeSkill;
+                atriStatsInstance.PlayerStats = playerStats;
+
+                attributeSlots.Add(skillObj);
+                return true;
+            }
         }
 
         // Inventory full
@@ -149,7 +174,7 @@ public class PlayerInventory : MonoBehaviour
         // testing only
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            AddAttackSkill((AttackStatsScriptableObject) GetSkills(1)[0]);
+            AddSkill(GetSkills(1)[0]);
         }
     }
 }

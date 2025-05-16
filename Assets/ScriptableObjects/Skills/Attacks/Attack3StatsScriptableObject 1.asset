@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fc168d134c3b6744a8bf41605afc660, type: 3}
-  m_Name: AttackStatsScriptableObject
+  m_Name: Attack3StatsScriptableObject 1
   m_EditorClassIdentifier: 
-  skillName: Arcane Bolt
+  skillName: tttet
   skillType: 2
-  skillPrefab: {fileID: 5435893848636375030, guid: 2d1b87625ecc9dd469668667af91670e, type: 3}
-  elementalType: 1
+  skillPrefab: {fileID: 3863563588811917912, guid: 8a371b7aa66b6834eb865e3983d26be0, type: 3}
+  elementalType: 3
   attackType: 0
   attackTargetType: 0
-  attackDamage: 10
-  attackPierce: 2
-  attackMovementSpeed: 4
-  attackRange: 5
-  attackLifespan: 1
-  attackCooldown: 2
+  attackDamage: 50
+  attackPierce: 5
+  attackMovementSpeed: 3
+  attackRange: 3
+  attackLifespan: 2
+  attackCooldown: 4
   attackCount: 1

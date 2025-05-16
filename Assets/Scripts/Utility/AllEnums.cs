@@ -15,7 +15,8 @@ public class AllEnums : MonoBehaviour
     {
         Bloodline,
         Attribue,
-        Elemental
+        Elemental,
+        Starter
     }
 
     public enum AttackType
@@ -31,6 +32,15 @@ public class AllEnums : MonoBehaviour
         RandomTargets,
         WalkDirection,
         Other
+    }
+
+    public enum AttributeType
+    {
+        Strength,
+        Health,
+        Speed,
+        CritRate,
+        CritDamage
     }
 
     public enum EnemyType

@@ -49,6 +49,6 @@ public class PlayerController : MonoBehaviour
     {
         if (!canMove) return;
 
-        rgbd2d.velocity = mvt.normalized * 4F;
+        rgbd2d.velocity = mvt.normalized * playerStats.currentMovementSpeed;
     }
 }

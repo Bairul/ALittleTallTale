@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf848c5b7d2c82743ac59907c0d2219a, type: 3}
-  m_Name: Gobin
+  m_Script: {fileID: 11500000, guid: b255a730051d0bf439b31b79df39ff29, type: 3}
+  m_Name: AttributeStatsScriptableObject
   m_EditorClassIdentifier: 
-  health: 10000
-  strength: 2
-  movementSpeed: 2
-  attackSpeed: 1
-  iFrameDuration: 0.2
-  enemyType: 2
+  skillName: Strength
+  skillType: 1
+  multiplier: 0.5
+  attributeType: 0

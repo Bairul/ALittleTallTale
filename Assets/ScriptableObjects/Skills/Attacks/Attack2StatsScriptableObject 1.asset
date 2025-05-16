@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fc168d134c3b6744a8bf41605afc660, type: 3}
-  m_Name: AttackStatsScriptableObject
+  m_Name: Attack2StatsScriptableObject 1
   m_EditorClassIdentifier: 
-  skillName: Arcane Bolt
+  skillName: testseyrt
   skillType: 2
-  skillPrefab: {fileID: 5435893848636375030, guid: 2d1b87625ecc9dd469668667af91670e, type: 3}
-  elementalType: 1
+  skillPrefab: {fileID: 5547229174969073133, guid: 51d3559894cc13943862e5afc4a78e2d, type: 3}
+  elementalType: 2
   attackType: 0
   attackTargetType: 0
-  attackDamage: 10
-  attackPierce: 2
-  attackMovementSpeed: 4
-  attackRange: 5
+  attackDamage: 20
+  attackPierce: 1
+  attackMovementSpeed: 5
+  attackRange: 6
   attackLifespan: 1
-  attackCooldown: 2
+  attackCooldown: 3
   attackCount: 1

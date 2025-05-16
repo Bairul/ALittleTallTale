@@ -17,11 +17,11 @@ public class AttackData
     public AttackData(AttackStats attackStats, PlayerStats playerStats)
     {
         rawDamage = playerStats.currentDamage + attackStats.currentDamage;
-        totalDamage = rawDamage * (Random.value < critRate ? critDmg : 1);
-        isCrit = totalDamage > rawDamage;
         critRate = playerStats.currentCritRate;
         critDmg = playerStats.currentCritDmg;
-
+        totalDamage = rawDamage * (Random.value < critRate ? critDmg : 1);
+        isCrit = totalDamage > rawDamage;
+        
         element = attackStats.AtkStats.ElementalType;
         pierce = attackStats.currentPierce;
         speed = attackStats.currentPierce;

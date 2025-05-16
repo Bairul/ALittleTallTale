@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class AimAtMouseBehavior : AttackBehavior
 {
-    public float speed = 10f;
-
     private Vector3 direction;
 
     new void Start()
@@ -16,6 +14,6 @@ public class AimAtMouseBehavior : AttackBehavior
 
     void Update()
     {
-        transform.position += speed * Time.deltaTime * direction;
+        transform.position += attackData.speed * Time.deltaTime * direction;
     }
 }

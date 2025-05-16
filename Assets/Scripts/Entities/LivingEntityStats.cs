@@ -9,11 +9,11 @@ public abstract class LivingEntityStats : MonoBehaviour
     [HideInInspector] public float invincibilityTimer;
     [HideInInspector] public bool isInvincible;
 
-    // current stats (make sure to hide in inspector later)
+    // current stats
     [HideInInspector] public float currentMaxHealth;
-    [HideInInspector] public float currentHealth;
+    public float currentHealth;
     [HideInInspector] public float currentMovementSpeed;
-    [HideInInspector] public float currentDamage;
+    public float currentDamage;
     [HideInInspector] public float currentAttackSpeed;
     
 
