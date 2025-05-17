@@ -56,30 +56,22 @@ public abstract class LivingEntityStats : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage) 
+    protected virtual void AdjustHealth(float value)
+    {
+        currentHealth = Mathf.Max(0, Mathf.Min(currentHealth + value, currentMaxHealth));
+    }
+
+    public void HealHealth(float amount)
+    {
+        if (amount > 0) AdjustHealth(amount);
+    }
+
+    public void TakeDamage(float damage)
     {
         if (isInvincible) return;
-        
-        DamageTaken(damage);
+
+        AdjustHealth(-damage);
         CheckHealth();
-    }
-
-    public void TakeDamage(AttackData attackData) 
-    {
-        if (isInvincible) return;
-        
-        DamageTaken(attackData);
-        CheckHealth();
-    }
-
-    protected virtual void DamageTaken(float damage)
-    {
-        currentHealth -= damage;
-    }
-
-    protected virtual void DamageTaken(AttackData attackData)
-    {
-        currentHealth -= attackData.totalDamage;
     }
 
     protected abstract void Kill();

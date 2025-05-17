@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class Collectible : MonoBehaviour
 {
+    [SerializeField]
     protected CollectibleScriptableObject collectibleData;
     public CollectibleScriptableObject CollectibleData {get => collectibleData; set => collectibleData = value;}
 

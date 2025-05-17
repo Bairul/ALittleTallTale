@@ -21,9 +21,13 @@ MonoBehaviour:
   critDamage: 2
   magnetRange: 3
   elementalAffinities: 01000000020000000300000004000000
-  maxLevel: 5
   levelRanges:
-  - maxLevel: 3
+  - minLevel: 1
+    maxLevel: 2
     experienceCap: 5
-  - maxLevel: 10
+  - minLevel: 3
+    maxLevel: 4
     experienceCap: 10
+  - minLevel: 5
+    maxLevel: 5
+    experienceCap: 15

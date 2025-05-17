@@ -24,11 +24,7 @@ public class CharacterStatsScriptableObject : LivingEntityStatsScriptableObject
     private ElementalType[] elementalAffinities;
     public ElementalType[] ElementalAffinities { get => elementalAffinities; }
 
-    [Header("Leveling")]
-    [SerializeField]
-    private int maxLevel;
-    public int MaxLevel {get => maxLevel; }
-
+    [Header("Leveling - Min/Max are inclusive")]
     [SerializeField]
     private List<LevelRange> levelRanges;
     public List<LevelRange> LevelRanges { get => levelRanges; }

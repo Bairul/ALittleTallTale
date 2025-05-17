@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerStats : LivingEntityStats
 {
     private CharacterStatsScriptableObject charStats;
-    public CharacterStatsScriptableObject CharStats { get => charStats; private set => charStats = value;}
+    public CharacterStatsScriptableObject CharStats { get => charStats; private set => charStats = value; }
 
     [HideInInspector] public float currentCritRate;
     [HideInInspector] public float currentCritDmg;
@@ -12,26 +12,38 @@ public class PlayerStats : LivingEntityStats
     [SerializeField] private PlayerMagnet playerMagnet;
     [HideInInspector] public float currentMagnetRange;
 
+    // healthbar
+    [SerializeField] private StatBar playerHealthBar;
+
     // Experience
-    private int currentExperience;
-    private int currentExperienceCap;
-    private int currentLevel = 1;
-    private int currentRangeIndex = 0;
+    [SerializeField] private StatBar playerXpBar;
+    private PlayerLevelingSystem levelSystem;
 
     protected override void Awake()
     {
         base.Awake();
-        charStats = (CharacterStatsScriptableObject) stats;
+        charStats = (CharacterStatsScriptableObject)stats;
 
         currentCritRate = charStats.CritRate;
         currentCritDmg = charStats.CritDamage;
+        levelSystem = new PlayerLevelingSystem(charStats.LevelRanges);
+        levelSystem.OnLevelUp += OnLevelUp;
     }
 
     void Start()
     {
-        UpdateExperienceCap();
+        playerXpBar.SetValue(0, 1);
         UpdateMagnetRange(charStats.MagnetRange);
     }
+
+    public void IncreaseExperience(int amount)
+    {
+        if (levelSystem.IsMaxLevel) return;
+
+        levelSystem.IncreaseExperience(amount);
+        UpdateXPBar();
+    }
+
 
     public void UpdateMagnetRange(float radius)
     {
@@ -39,43 +51,24 @@ public class PlayerStats : LivingEntityStats
         playerMagnet.Range.radius = currentMagnetRange;
     }
 
-    void LevelUp()
+    private void OnLevelUp()
     {
-        currentLevel++;
-        currentExperience -= currentExperienceCap;
-
-        UpdateExperienceCap();
+        Debug.Log("LEVELED UP!!!!!\n You are now Level " + levelSystem.CurrentLevel);
     }
 
-    public void IncreaseExperience(int amount)
+    private void UpdateXPBar()
     {
-        if (currentLevel >= charStats.MaxLevel) return;
-
-        currentExperience += amount;
-
-        if (currentExperience >= currentExperienceCap)
-        {
-            LevelUp();
-        }
+        if (levelSystem.IsMaxLevel)
+            playerXpBar.SetValue(1, 1); // Full bar or hide bar
+        else
+            playerXpBar.SetValue(levelSystem.CurrentExperience, levelSystem.ExperienceCap);
     }
 
-    private void UpdateExperienceCap()
+
+    protected override void AdjustHealth(float value)
     {
-        if (currentRangeIndex >= charStats.LevelRanges.Count) return;
-
-        if (currentLevel > charStats.LevelRanges[currentRangeIndex].maxLevel)
-        {
-            currentRangeIndex++;
-        }
-
-        if (currentRangeIndex >= charStats.LevelRanges.Count) return;
-
-        currentExperienceCap = charStats.LevelRanges[currentRangeIndex].experienceCap;
-    }
-
-    protected override void DamageTaken(float damage)
-    {
-        currentHealth -= damage;
+        base.AdjustHealth(value);
+        playerHealthBar.SetValue(currentHealth, currentMaxHealth);
     }
 
     protected override void Kill()

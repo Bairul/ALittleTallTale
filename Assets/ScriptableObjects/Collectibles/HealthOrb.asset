@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collectibleType: 0
   collectiblePrefab: {fileID: 8319967895206709149, guid: 9286e530ad95cef498a2ac370b1060f5, type: 3}
-  collectibleValue: 10
+  collectibleValue: 2
   pullSpeed: 4

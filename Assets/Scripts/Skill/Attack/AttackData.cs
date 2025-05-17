@@ -19,7 +19,7 @@ public class AttackData
         rawDamage = playerStats.currentDamage + attackStats.currentDamage;
         critRate = playerStats.currentCritRate;
         critDmg = playerStats.currentCritDmg;
-        totalDamage = rawDamage * (Random.value < critRate ? critDmg : 1);
+        totalDamage = rawDamage * (Random.value < critRate ? critDmg : 1); // crit chance already set
         isCrit = totalDamage > rawDamage;
         
         element = attackStats.AtkStats.ElementalType;

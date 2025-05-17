@@ -14,12 +14,18 @@ public class EnemyStats : LivingEntityStats
         lootTable = GetComponent<LootTable>();
     }
 
-    protected override void DamageTaken(AttackData attackData)
+    public void TakeDamage(AttackData attackData)
     {
-        base.DamageTaken(attackData);
-        float elementalDamage = attackData.totalDamage * GameWorld.Instance.GetElementalDamageModifier(attackData.element, enemStats.EnemyType);
-        DamageTaken(elementalDamage - attackData.totalDamage);
-        damageIndicator.ShowDamage(elementalDamage, attackData.isCrit);
+        // need to take into account for elemental weakness/resistance
+        float actualDamage = attackData.totalDamage * GameWorld.Instance.GetElementalDamageModifier(attackData.element, enemStats.EnemyType);
+        damageIndicator.IsCrit = attackData.isCrit;
+        TakeDamage(actualDamage);
+    }
+
+    protected override void AdjustHealth(float value)
+    {
+        base.AdjustHealth(value);
+        damageIndicator.ShowDamage(value);
     }
 
     protected override void Kill()
