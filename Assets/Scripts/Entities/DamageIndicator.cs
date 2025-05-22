@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class DamageIndicator : MonoBehaviour
@@ -26,7 +27,7 @@ public class DamageIndicator : MonoBehaviour
             txt += (int)damage;
         }
 
-        dmgTxt.GetComponentInChildren<TextMesh>().text = txt;
+        dmgTxt.GetComponentInChildren<TextMeshPro>().text = txt;
         Destroy(dmgTxt, duration);
     }
 }
