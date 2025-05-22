@@ -12,11 +12,7 @@ public class PlayerStats : LivingEntityStats
     [SerializeField] private PlayerMagnet playerMagnet;
     [HideInInspector] public float currentMagnetRange;
 
-    // healthbar
-    [SerializeField] private StatBar playerHealthBar;
-
-    // Experience
-    [SerializeField] private StatBar playerXpBar;
+    [SerializeField] private PlayerUI playerUI;
     private PlayerLevelingSystem levelSystem;
 
     protected override void Awake()
@@ -32,7 +28,6 @@ public class PlayerStats : LivingEntityStats
 
     void Start()
     {
-        playerXpBar.SetValue(0, 1);
         UpdateMagnetRange(charStats.MagnetRange);
     }
 
@@ -53,22 +48,22 @@ public class PlayerStats : LivingEntityStats
 
     private void OnLevelUp()
     {
-        Debug.Log("LEVELED UP!!!!!\n You are now Level " + levelSystem.CurrentLevel);
+        playerUI.SetLevel(levelSystem.CurrentLevel);
     }
 
     private void UpdateXPBar()
     {
         if (levelSystem.IsMaxLevel)
-            playerXpBar.SetValue(1, 1); // Full bar or hide bar
+            playerUI.xpBar.SetValue(1, 1); // Full bar or hide bar
         else
-            playerXpBar.SetValue(levelSystem.CurrentExperience, levelSystem.ExperienceCap);
+            playerUI.xpBar.SetValue(levelSystem.CurrentExperience, levelSystem.ExperienceCap);
     }
 
 
     protected override void AdjustHealth(float value)
     {
         base.AdjustHealth(value);
-        playerHealthBar.SetValue(currentHealth, currentMaxHealth);
+        playerUI.healthBar.SetValue(currentHealth, currentMaxHealth);
     }
 
     protected override void Kill()
