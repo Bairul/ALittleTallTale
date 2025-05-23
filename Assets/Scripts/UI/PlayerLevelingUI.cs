@@ -7,6 +7,7 @@ public class PlayerLevelingUI : MonoBehaviour
     [SerializeField] private GameObject skillOptionPrefab;
     [SerializeField] private Transform skillOptionsListPanel;
     [SerializeField] private ShowSkillDescription skillDescriptionPanel;
+    [SerializeField] private PauseMenu pauseMenu;
     private bool isChoosingSkill = false;
 
     public void ShowSkillOptions(List<SkillStatsScriptableObject> skills)
@@ -33,11 +34,13 @@ public class PlayerLevelingUI : MonoBehaviour
                 gameObject.SetActive(false);
                 isChoosingSkill = false;
                 Time.timeScale = 1f;
+                pauseMenu.TogglePausing(true);
             });
         }
 
         gameObject.SetActive(true);
         isChoosingSkill = true;
         Time.timeScale = 0f;
+        pauseMenu.TogglePausing(false);
     }
 }

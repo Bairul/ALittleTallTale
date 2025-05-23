@@ -1,52 +1,47 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
-    public float pauseCooldown = 0.5f;
+    [SerializeField] private float pauseCooldown = 0.5f;
     private float nextPauseAllowedTime = 0f;
     private bool isPaused = false;
+    private bool allowPausing = true;
+
+    public void TogglePausing(bool toggle)
+    {
+        allowPausing = toggle;
+        gameObject.SetActive(toggle);
+    }
+
+    private bool CanPause()
+    {
+        return allowPausing && Time.unscaledTime >= nextPauseAllowedTime;
+    }
 
     void Update()
     {
-        if (Time.unscaledTime < nextPauseAllowedTime)
-            return;
+        if (!CanPause()) return;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (isPaused) Resume();
-            else Pause();
-
-            nextPauseAllowedTime = Time.unscaledTime + pauseCooldown;
-            Debug.Log(nextPauseAllowedTime);
-        }
+        if (Input.GetKeyDown(KeyCode.Escape)) TogglePause();
     }
 
-    public void Pause()
+    public void TogglePause()
     {
-        if (Time.unscaledTime < nextPauseAllowedTime)
-            return;
+        if (!CanPause()) return;
 
         isPaused = !isPaused;
         if (isPaused)
         {
-            pausePanel.SetActive(true);
             Time.timeScale = 0f;
         }
         else
         {
-            pausePanel.SetActive(false);
             Time.timeScale = 1f;
+            nextPauseAllowedTime = Time.unscaledTime + pauseCooldown;
         }
-    }
-
-    public void Resume()
-    {
-        pausePanel.SetActive(false);
-        Time.timeScale = 1f;
-        isPaused = false;
+        pausePanel.SetActive(isPaused);
     }
 
     public void MainMenu()

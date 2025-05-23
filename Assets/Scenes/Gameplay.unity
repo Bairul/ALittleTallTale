@@ -3044,7 +3044,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 624352444}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: Pause
+        m_MethodName: TogglePause
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3584,6 +3584,7 @@ MonoBehaviour:
   skillOptionPrefab: {fileID: 5336835065059541174, guid: 0900f94218e933649b7353c2085f687b, type: 3}
   skillOptionsListPanel: {fileID: 202626556}
   skillDescriptionPanel: {fileID: 1308640516}
+  pauseMenu: {fileID: 624352444}
 --- !u!1001 &2080904889
 PrefabInstance:
   m_ObjectHideFlags: 0
