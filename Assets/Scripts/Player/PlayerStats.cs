@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerStats : LivingEntityStats
@@ -14,21 +15,24 @@ public class PlayerStats : LivingEntityStats
 
     [SerializeField] private PlayerUI playerUI;
     private PlayerLevelingSystem levelSystem;
+    private PlayerSkillPool skillPool;
 
     protected override void Awake()
     {
         base.Awake();
         charStats = (CharacterStatsScriptableObject)stats;
+        skillPool = GetComponent<PlayerSkillPool>();
 
         currentCritRate = charStats.CritRate;
         currentCritDmg = charStats.CritDamage;
         levelSystem = new PlayerLevelingSystem(charStats.LevelRanges);
-        levelSystem.OnLevelUp += OnLevelUp;
     }
 
     void Start()
     {
         UpdateMagnetRange(charStats.MagnetRange);
+        skillPool.Initialize(charStats.ElementalAffinities);
+        levelSystem.OnLevelUp += OnLevelUp;
     }
 
     public void IncreaseExperience(int amount)
@@ -48,6 +52,7 @@ public class PlayerStats : LivingEntityStats
 
     private void OnLevelUp()
     {
+        playerUI.levelingUI.ShowSkillOptions(skillPool.OfferRandomSkills(3));
         playerUI.SetLevel(levelSystem.CurrentLevel);
     }
 

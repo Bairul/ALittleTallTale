@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: AttributeStatsScriptableObject
   m_EditorClassIdentifier: 
   skillName: Strength
+  skillDescription: musclllle
   skillType: 1
+  skillIcon: {fileID: 224909408, guid: 01bd976736f80504d89ca7879f144f0f, type: 3}
   multiplier: 0.5
   attributeType: 0

@@ -9,6 +9,8 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private GameObject levelTextObject;
     private TextMeshProUGUI levelText;
 
+    public PlayerLevelingUI levelingUI;
+
     void Start()
     {
         levelText = levelTextObject.GetComponentInChildren<TextMeshProUGUI>();

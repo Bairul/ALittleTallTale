@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc168d134c3b6744a8bf41605afc660, type: 3}
   m_Name: Attack3StatsScriptableObject 1
   m_EditorClassIdentifier: 
-  skillName: tttet
+  skillName: Earth
   skillType: 2
+  skillDescription: bery bery nice descrip
   skillPrefab: {fileID: 3863563588811917912, guid: 8a371b7aa66b6834eb865e3983d26be0, type: 3}
+  skillIcon: {fileID: 1262654411, guid: 01bd976736f80504d89ca7879f144f0f, type: 3}
   elementalType: 3
   attackType: 0
   attackTargetType: 0

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc168d134c3b6744a8bf41605afc660, type: 3}
   m_Name: Attack2StatsScriptableObject 1
   m_EditorClassIdentifier: 
-  skillName: testseyrt
+  skillName: Water
   skillType: 2
+  skillDescription: crazy description
   skillPrefab: {fileID: 5547229174969073133, guid: 51d3559894cc13943862e5afc4a78e2d, type: 3}
+  skillIcon: {fileID: -1188917955, guid: 01bd976736f80504d89ca7879f144f0f, type: 3}
   elementalType: 2
   attackType: 0
   attackTargetType: 0

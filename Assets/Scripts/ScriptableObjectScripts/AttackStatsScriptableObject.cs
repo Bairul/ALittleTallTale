@@ -1,10 +1,10 @@
 using UnityEngine;
+using UnityEngine.UI;
 using static AllEnums;
 
 [CreateAssetMenu(fileName ="AttackStatsScriptableObject", menuName ="ScriptableObjects/Attack")]
 public class AttackStatsScriptableObject : SkillStatsScriptableObject
 {
-
     [SerializeField]
     private GameObject skillPrefab;
     public GameObject SkillPrefab { get => skillPrefab; private set => skillPrefab = value; }

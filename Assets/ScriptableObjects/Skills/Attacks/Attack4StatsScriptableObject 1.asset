@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fc168d134c3b6744a8bf41605afc660, type: 3}
   m_Name: Attack4StatsScriptableObject 1
   m_EditorClassIdentifier: 
-  skillName: tests
+  skillName: Wind
   skillType: 2
+  skillDescription: whowhowohwohwo
   skillPrefab: {fileID: 2182395611333698191, guid: a833187cf8fd8274f850730f4deca41f, type: 3}
+  skillIcon: {fileID: 1281879028, guid: 01bd976736f80504d89ca7879f144f0f, type: 3}
   elementalType: 4
   attackType: 0
   attackTargetType: 0

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: AttributeStatsScriptableObject 1
   m_EditorClassIdentifier: 
   skillName: Health
+  skillDescription: HPPPH
   skillType: 1
+  skillIcon: {fileID: -1036326631, guid: 01bd976736f80504d89ca7879f144f0f, type: 3}
   multiplier: 0.5
   attributeType: 1
