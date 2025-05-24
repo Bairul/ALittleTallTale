@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf848c5b7d2c82743ac59907c0d2219a, type: 3}
   m_Name: Gobin
   m_EditorClassIdentifier: 
+  entityPrefab: {fileID: 3207421002187934168, guid: b09fd98ed08884244905c738b7d6f4f0, type: 3}
   health: 100
   strength: 2
   movementSpeed: 2

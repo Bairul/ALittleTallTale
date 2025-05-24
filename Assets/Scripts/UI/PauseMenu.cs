@@ -9,7 +9,7 @@ public class PauseMenu : MonoBehaviour
     private bool isPaused = false;
     private bool allowPausing = true;
 
-    public void TogglePausing(bool toggle)
+    public void ToggleAllowPausing(bool toggle)
     {
         allowPausing = toggle;
         gameObject.SetActive(toggle);

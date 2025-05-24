@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class LivingEntityStatsScriptableObject : ScriptableObject
 {
+    [SerializeField]
+    private GameObject entityPrefab;
+    public GameObject EntityPrefab { get => entityPrefab; private set => entityPrefab = value; }
+
     [Header("Base Stats")]
     [SerializeField]
     private float health;

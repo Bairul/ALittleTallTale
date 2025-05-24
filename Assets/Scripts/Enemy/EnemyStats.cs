@@ -14,6 +14,11 @@ public class EnemyStats : LivingEntityStats
         lootTable = GetComponent<LootTable>();
     }
 
+    void Start()
+    {
+        EnemiesManager.Instance.Register(gameObject);
+    }
+
     public void TakeDamage(AttackData attackData)
     {
         // need to take into account for elemental weakness/resistance
@@ -30,7 +35,8 @@ public class EnemyStats : LivingEntityStats
 
     protected override void Kill()
     {
-        Destroy(gameObject);
+        EnemiesManager.Instance.Unregister(gameObject);
         lootTable.DropLoot();
+        Destroy(gameObject);
     }
 }

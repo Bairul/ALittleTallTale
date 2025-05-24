@@ -34,13 +34,13 @@ public class PlayerLevelingUI : MonoBehaviour
                 gameObject.SetActive(false);
                 isChoosingSkill = false;
                 Time.timeScale = 1f;
-                pauseMenu.TogglePausing(true);
+                pauseMenu.ToggleAllowPausing(true);
             });
         }
 
         gameObject.SetActive(true);
         isChoosingSkill = true;
         Time.timeScale = 0f;
-        pauseMenu.TogglePausing(false);
+        pauseMenu.ToggleAllowPausing(false);
     }
 }
