@@ -19,21 +19,6 @@ public class AllEnums : MonoBehaviour
         Starter
     }
 
-    public enum AttackType
-    {
-        Automatic,
-        Active
-    }
-
-    public enum AttackTargetType
-    {
-        Mouse,
-        NearestTargets,
-        RandomTargets,
-        WalkDirection,
-        Other
-    }
-
     public enum AttributeType
     {
         Strength,

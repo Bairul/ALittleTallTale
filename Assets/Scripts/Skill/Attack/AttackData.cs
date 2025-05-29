@@ -14,8 +14,10 @@ public class AttackData
     public float range;
     public bool isCrit;
 
-    public AttackData(AttackStats attackStats, PlayerStats playerStats)
+    public AttackData(AttackStats attackStats)
     {
+        PlayerStats playerStats = PlayerManager.Instance.Stats;
+        
         rawDamage = playerStats.currentDamage + attackStats.currentDamage;
         critRate = playerStats.currentCritRate;
         critDmg = playerStats.currentCritDmg;

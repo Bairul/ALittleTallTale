@@ -10,10 +10,12 @@ public class AttackStats : MonoBehaviour
     [HideInInspector] public float currentPierce;
     [HideInInspector] public float currentMovementSpeed;
     [HideInInspector] public float currentCooldown;
-    [HideInInspector] public float currentCount;
+    [HideInInspector] public int currentCount;
     [HideInInspector] public float currentRange;
     [HideInInspector] public float currentLifespan;
     [HideInInspector] public int currentLevel;
+    [HideInInspector] public float currentSpawnRange;
+    [HideInInspector] public float currentSpread;
 
     void Start()
     {
@@ -24,6 +26,8 @@ public class AttackStats : MonoBehaviour
         currentRange = attackStats.AttackRange;
         currentLifespan = attackStats.AttackLifespan;
         currentCount = attackStats.AttackCount;
+        currentSpawnRange = attackStats.AttackSpawnRange;
+        currentSpread = attackStats.AttackSpread;
         currentLevel = 1;
     }
 
@@ -53,18 +57,6 @@ public class AttackStats : MonoBehaviour
 
     private void LaunchAttack()
     {
-        GameObject atkInstance = Instantiate(attackStats.SkillPrefab, transform.position, Quaternion.identity);
-        // attach a behavior to the instance
-        AttackBehavior ab = attackStats.AttackTargetType switch
-        {
-            AttackTargetType.Mouse => atkInstance.AddComponent<AimAtMouseBehavior>(),
-            AttackTargetType.NearestTargets => null,
-            AttackTargetType.RandomTargets => null,
-            AttackTargetType.WalkDirection => null,
-            AttackTargetType.Other => null,
-            _ => null
-        };
-
-        ab.AtkData = new AttackData(this, PlayerManager.Instance.Stats);
+        attackStats.SpawnBehavior.SpawnProjectiles(this);
     }
 }

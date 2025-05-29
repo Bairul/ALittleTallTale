@@ -1,8 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 using static AllEnums;
 
-[CreateAssetMenu(fileName ="AttackStatsScriptableObject", menuName ="ScriptableObjects/Attack")]
+[CreateAssetMenu(fileName = "AttackStatsScriptableObject", menuName = "ScriptableObjects/Attack")]
 public class AttackStatsScriptableObject : SkillStatsScriptableObject
 {
     [SerializeField]
@@ -12,14 +11,6 @@ public class AttackStatsScriptableObject : SkillStatsScriptableObject
     [SerializeField]
     private ElementalType elementalType;
     public ElementalType ElementalType { get => elementalType; private set => elementalType = value; }
-
-    [SerializeField]
-    private AttackType attackType;
-    public AttackType AttackType { get => attackType; private set => attackType = value; }
-
-    [SerializeField]
-    private AttackTargetType attackTargetType;
-    public AttackTargetType AttackTargetType { get => attackTargetType; private set => attackTargetType = value; }
 
     [SerializeField]
     private float attackDamage;
@@ -48,4 +39,17 @@ public class AttackStatsScriptableObject : SkillStatsScriptableObject
     [SerializeField]
     private int attackCount;
     public int AttackCount { get => attackCount; private set => attackCount = value; }
+
+    [Header("Spawning")]
+    [SerializeField]
+    private float attackSpread;
+    public float AttackSpread { get => attackSpread; private set => attackSpread = value; }
+
+    [SerializeField]
+    private float attackSpawnRange;
+    public float AttackSpawnRange { get => attackSpawnRange; private set => attackSpawnRange = value; }
+
+    [SerializeField]
+    private SpawnBehavior spawnBehavior;
+    public SpawnBehavior SpawnBehavior { get => spawnBehavior; private set => spawnBehavior = value; }
 }

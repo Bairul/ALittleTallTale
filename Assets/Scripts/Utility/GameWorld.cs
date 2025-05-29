@@ -10,16 +10,16 @@ public class GameWorld : MonoBehaviour
     // place all skills here
     [SerializeField]
     private AttackStatsScriptableObject[] allAttackSkills;
-    public AttackStatsScriptableObject[] AllAttackSkills  { get => allAttackSkills ; private set => allAttackSkills  = value; }
+    public AttackStatsScriptableObject[] AllAttackSkills { get => allAttackSkills; private set => allAttackSkills = value; }
 
     [SerializeField]
     private AttributeStatsScriptableObject[] allAttributeSkills;
-    public AttributeStatsScriptableObject[] AllAttributeSkills  { get => allAttributeSkills ; private set => allAttributeSkills  = value; }
+    public AttributeStatsScriptableObject[] AllAttributeSkills { get => allAttributeSkills; private set => allAttributeSkills = value; }
 
     // elemental damage bonus
-    [Range(0,1)] [SerializeField] private float elementalDamageBonus;
+    [Range(0, 1)][SerializeField] private float elementalDamageBonus;
 
-    [Range(0,1)] [SerializeField] private float elementalDamageResist;
+    [Range(0, 1)][SerializeField] private float elementalDamageResist;
     private Dictionary<string, float> elementalDamageTable;
 
     private void Awake()
@@ -61,5 +61,10 @@ public class GameWorld : MonoBehaviour
             return damageModifier;
         }
         return 1.0f;
+    }
+
+    public Vector2 GetMousePosition()
+    {
+        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 }

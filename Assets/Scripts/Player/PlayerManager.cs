@@ -9,6 +9,11 @@ public class PlayerManager : MonoBehaviour
     private PlayerInventory playerInventory;
     public PlayerInventory PlayerInventory { get => playerInventory; private set => playerInventory = value; }
 
+    public Vector2 GetPlayerPosition()
+    {
+        return transform.position;
+    }
+
     private void Awake()
     {
         // Check if an instance already exists

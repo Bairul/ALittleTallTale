@@ -11,9 +11,9 @@ public abstract class LivingEntityStats : MonoBehaviour
 
     // current stats
     [HideInInspector] public float currentMaxHealth;
-    public float currentHealth;
+    [HideInInspector] public float currentHealth;
     [HideInInspector] public float currentMovementSpeed;
-    public float currentDamage;
+    [HideInInspector] public float currentDamage;
     [HideInInspector] public float currentAttackSpeed;
     
 

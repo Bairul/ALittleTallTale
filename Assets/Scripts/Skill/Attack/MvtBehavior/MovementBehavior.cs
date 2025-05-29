@@ -1,9 +1,18 @@
 using UnityEngine;
 
-public abstract class AttackBehavior : MonoBehaviour
+[RequireComponent(typeof(CircleCollider2D))]
+public abstract class MovementBehavior : MonoBehaviour
 {
     protected AttackData attackData;
-    public AttackData AtkData { get => attackData; set => attackData = value; }
+    protected Vector2 direction;
+
+    protected abstract void Tick(float deltaTime);
+
+    public void Initialize(Vector2 initialFacingDirection, AttackStats attackStats)
+    {
+        direction = initialFacingDirection.normalized;
+        attackData = new AttackData(attackStats);
+    }
 
     protected virtual void Start()
     {
@@ -14,7 +23,12 @@ public abstract class AttackBehavior : MonoBehaviour
         Destroy(gameObject, attackData.lifespan);
     }
 
-    protected virtual void ReducePierce() 
+    void FixedUpdate()
+    {
+        Tick(Time.deltaTime);
+    }
+
+    private void ReducePierce()
     {
         attackData.pierce--;
 
@@ -24,12 +38,12 @@ public abstract class AttackBehavior : MonoBehaviour
         }
     }
 
-    protected virtual void Kill()
+    private void Kill()
     {
         Destroy(gameObject);
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerEnter2D(Collider2D collider)
     {
         if (attackData.pierce > 0 && collider.CompareTag("Enemy"))
         {

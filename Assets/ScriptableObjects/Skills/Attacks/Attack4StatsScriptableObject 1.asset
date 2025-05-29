@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Attack4StatsScriptableObject 1
   m_EditorClassIdentifier: 
   skillName: Wind
-  skillType: 2
   skillDescription: whowhowohwohwo
-  skillPrefab: {fileID: 2182395611333698191, guid: a833187cf8fd8274f850730f4deca41f, type: 3}
+  skillType: 2
   skillIcon: {fileID: 1281879028, guid: 01bd976736f80504d89ca7879f144f0f, type: 3}
+  skillPrefab: {fileID: 2182395611333698191, guid: a833187cf8fd8274f850730f4deca41f, type: 3}
   elementalType: 4
   attackType: 0
-  attackTargetType: 0
+  attackTargetType: 4
   attackDamage: 70
   attackPierce: 1
   attackMovementSpeed: 5
@@ -27,3 +27,8 @@ MonoBehaviour:
   attackLifespan: 2
   attackCooldown: 4
   attackCount: 1
+  attackSpawnConfig:
+    spawnRadius: 2
+    spawnDirection: {x: 1, y: 0}
+    isEvenlySpaced: 0
+    spreadFactor: 15
