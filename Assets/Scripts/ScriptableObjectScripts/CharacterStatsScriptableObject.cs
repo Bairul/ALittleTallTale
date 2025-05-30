@@ -2,15 +2,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using static AllEnums;
 
-[CreateAssetMenu(fileName ="CharacterStatsScriptableObject", menuName ="ScriptableObjects/Character")]
+[CreateAssetMenu(fileName = "CharacterStatsScriptableObject", menuName = "ScriptableObjects/Character")]
 public class CharacterStatsScriptableObject : LivingEntityStatsScriptableObject
 {
-    [Range(0,1)]
+    [Range(0, 1)]
     [SerializeField]
     private float critRate;
     public float CritRate { get => critRate; private set => critRate = value; }
 
-    [Range(1,5)]
+    [Range(1, 5)]
     [SerializeField]
     private float critDamage;
     public float CritDamage { get => critDamage; private set => critDamage = value; }
@@ -28,4 +28,9 @@ public class CharacterStatsScriptableObject : LivingEntityStatsScriptableObject
     [SerializeField]
     private List<LevelRange> levelRanges;
     public List<LevelRange> LevelRanges { get => levelRanges; }
+
+    [Header("Starting Skills")]
+    [SerializeField]
+    private SkillStatsScriptableObject basicAttack;
+    public SkillStatsScriptableObject BasicAttack { get => basicAttack; private set => basicAttack = value; }
 }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b255a730051d0bf439b31b79df39ff29, type: 3}
-  m_Name: AttributeStatsScriptableObject
+  m_Name: HealthScriptableObject
   m_EditorClassIdentifier: 
-  skillName: Strength
-  skillDescription: musclllle
-  skillType: 1
-  skillIcon: {fileID: 224909408, guid: 01bd976736f80504d89ca7879f144f0f, type: 3}
+  skillName: Health
+  skillDescription: HPPPH
+  skillType: 0
+  skillIcon: {fileID: -1036326631, guid: 01bd976736f80504d89ca7879f144f0f, type: 3}
   multiplier: 0.5
-  attributeType: 0
+  attributeType: 1

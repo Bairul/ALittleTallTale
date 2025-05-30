@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b255a730051d0bf439b31b79df39ff29, type: 3}
-  m_Name: AttributeStatsScriptableObject 2
+  m_Name: StrengthScriptableObject
   m_EditorClassIdentifier: 
-  skillName: Movement Speed
-  skillDescription: SPEEEEEEEdddd
-  skillType: 1
-  skillIcon: {fileID: -1760143107, guid: 01bd976736f80504d89ca7879f144f0f, type: 3}
+  skillName: Strength
+  skillDescription: musclllle
+  skillType: 0
+  skillIcon: {fileID: 224909408, guid: 01bd976736f80504d89ca7879f144f0f, type: 3}
   multiplier: 0.5
-  attributeType: 2
+  attributeType: 0

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64651ef08ceb9c242999133738538e4c, type: 3}
   m_Name: Charwin
   m_EditorClassIdentifier: 
+  entityPrefab: {fileID: 0}
   health: 10
   strength: 10
   movementSpeed: 4
@@ -20,7 +21,7 @@ MonoBehaviour:
   critRate: 0.5
   critDamage: 2
   magnetRange: 3
-  elementalAffinities: 01000000020000000300000004000000
+  elementalAffinities: 01000000
   levelRanges:
   - minLevel: 1
     maxLevel: 2
@@ -31,3 +32,4 @@ MonoBehaviour:
   - minLevel: 5
     maxLevel: 5
     experienceCap: 15
+  basicAttack: {fileID: 11400000, guid: 543ba56d27dc1c54d8aeb0819f3eb010, type: 2}

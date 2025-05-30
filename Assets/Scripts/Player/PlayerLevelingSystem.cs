@@ -36,8 +36,7 @@ public class PlayerLevelingSystem
         }
 
         // Prevent overfill after hitting max level
-        if (IsMaxLevel)
-            currentExperience = 0;
+        if (IsMaxLevel) currentExperience = 0;
     }
 
     private int GetExperienceCapForLevel(int level)

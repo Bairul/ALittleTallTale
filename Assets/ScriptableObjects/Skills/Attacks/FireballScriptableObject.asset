@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fc168d134c3b6744a8bf41605afc660, type: 3}
-  m_Name: AttackStatsScriptableObject
+  m_Name: FireballScriptableObject
   m_EditorClassIdentifier: 
   skillName: Fire
   skillDescription: Furioballl
-  skillType: 2
+  skillType: 1
   skillIcon: {fileID: 1838862360, guid: 01bd976736f80504d89ca7879f144f0f, type: 3}
   skillPrefab: {fileID: 5857623741406543056, guid: d7fef8a0c4911ae4d88e307f242f4cb4, type: 3}
   elementalType: 1
@@ -24,7 +24,7 @@ MonoBehaviour:
   attackRange: 2
   attackLifespan: 4
   attackCooldown: 3
-  attackCount: 5
+  attackCount: 2
   attackSpread: 10
   attackSpawnRange: 0.2
   spawnBehavior: {fileID: 11400000, guid: f69059c0270472b44ba00c89a03ab9a5, type: 2}

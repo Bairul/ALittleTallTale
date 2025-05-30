@@ -13,10 +13,9 @@ public class AllEnums : MonoBehaviour
 
     public enum SkillType
     {
-        Bloodline,
-        Attribue,
+        Attribute,
         Elemental,
-        Starter
+        Dash
     }
 
     public enum AttributeType

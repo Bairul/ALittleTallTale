@@ -22,6 +22,7 @@ public class PlayerInventory : MonoBehaviour
     void Start()
     {
         playerStats = GetComponentInParent<PlayerStats>();
+        AddSkill(playerStats.CharStats.BasicAttack);
     }
 
     public bool AddSkill(SkillStatsScriptableObject skill)
@@ -33,11 +34,11 @@ public class PlayerInventory : MonoBehaviour
         {
             if (attackSlots.Count < maxSkillSlots)
             {
-                AttackStatsScriptableObject attackSkill = (AttackStatsScriptableObject) skill;
+                AttackStatsScriptableObject attackSkill = (AttackStatsScriptableObject)skill;
 
                 GameObject skillObj = new(attackSkill.SkillName);
                 skillObj.transform.SetParent(transform, worldPositionStays: false);
-                
+
                 AttackStats atkStatsInstance = skillObj.AddComponent<AttackStats>();
                 atkStatsInstance.AtkStats = attackSkill;
 
@@ -45,15 +46,15 @@ public class PlayerInventory : MonoBehaviour
                 return true;
             }
         }
-        else if (skill.SkillType == SkillType.Attribue)
+        else if (skill.SkillType == SkillType.Attribute)
         {
             if (attributeSlots.Count < maxSkillSlots)
             {
-                AttributeStatsScriptableObject attributeSkill = (AttributeStatsScriptableObject) skill;
+                AttributeStatsScriptableObject attributeSkill = (AttributeStatsScriptableObject)skill;
 
                 GameObject skillObj = new(attributeSkill.SkillName);
                 skillObj.transform.SetParent(transform, worldPositionStays: false);
-                
+
                 AttributeStats attriStatsInstance = skillObj.AddComponent<AttributeStats>();
                 attriStatsInstance.AttriStats = attributeSkill;
                 attriStatsInstance.PlayerStats = playerStats;

@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     // private fields
     private PlayerStats playerStats;
     private Rigidbody2D rgbd2d;
+    public Rigidbody2D Rigidbody { get => rgbd2d; }
     private Vector2 mvt;
 
     public bool canMove;
@@ -25,7 +26,7 @@ public class PlayerController : MonoBehaviour
     // Start is used when referencing other game objects and their components or just after Awake
     void Start()
     {
-        
+
     }
 
     void PlayerMovement()
@@ -33,8 +34,8 @@ public class PlayerController : MonoBehaviour
         mvt.x = Input.GetAxisRaw("Horizontal");
         mvt.y = Input.GetAxisRaw("Vertical");
 
-        animate.vertical = (int) mvt.y;
-        animate.horizontal = (int) mvt.x;
+        animate.vertical = (int)mvt.y;
+        animate.horizontal = (int)mvt.x;
     }
 
     // Update is called once per frame
