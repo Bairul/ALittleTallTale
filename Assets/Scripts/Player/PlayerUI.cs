@@ -4,12 +4,14 @@ using UnityEngine;
 public class PlayerUI : MonoBehaviour
 {
     public StatBar healthBar;
-
     public StatBar xpBar;
+    public PlayerLevelingUI levelingUI;
+    public InventoryUI inventoryUI;
+    public StatBarAnimated dashBar;
+    public StatBarAnimated basicBar;
+
     [SerializeField] private GameObject levelTextObject;
     private TextMeshProUGUI levelText;
-
-    public PlayerLevelingUI levelingUI;
 
     void Start()
     {

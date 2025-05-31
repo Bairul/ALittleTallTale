@@ -18,7 +18,7 @@ MonoBehaviour:
   skillIcon: {fileID: 1838862360, guid: 01bd976736f80504d89ca7879f144f0f, type: 3}
   skillPrefab: {fileID: 5857623741406543056, guid: d7fef8a0c4911ae4d88e307f242f4cb4, type: 3}
   elementalType: 1
-  attackDamage: 10
+  attackDamage: 20
   attackPierce: 2
   attackMovementSpeed: 3
   attackRange: 2

@@ -13,6 +13,8 @@ public class PlayerStats : LivingEntityStats
     [HideInInspector] public float currentMagnetRange;
 
     [SerializeField] private PlayerUI playerUI;
+    public PlayerUI PlayerUI { get => playerUI; private set => playerUI = value; }
+    
     private PlayerLevelingSystem levelSystem;
     private PlayerSkillPool skillPool;
 

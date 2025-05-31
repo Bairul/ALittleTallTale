@@ -15,7 +15,8 @@ public class AllEnums : MonoBehaviour
     {
         Attribute,
         Elemental,
-        Dash
+        Dash,
+        Starter
     }
 
     public enum AttributeType

@@ -8,7 +8,6 @@ public class PlayerInventory : MonoBehaviour
     public int maxSkillSlots = 5;
     public List<GameObject> attackSlots;
     public List<GameObject> attributeSlots;
-    public List<GameObject> starterSlots;
 
     private PlayerStats playerStats;
 
@@ -16,16 +15,27 @@ public class PlayerInventory : MonoBehaviour
     {
         attackSlots = new();
         attributeSlots = new();
-        starterSlots = new();
     }
 
     void Start()
     {
         playerStats = GetComponentInParent<PlayerStats>();
-        AddSkill(playerStats.CharStats.BasicAttack);
+
+        InitBasicSkill((AttackStatsScriptableObject)playerStats.CharStats.BasicAttack);
     }
 
-    public bool AddSkill(SkillStatsScriptableObject skill)
+    private void InitBasicSkill(AttackStatsScriptableObject skill)
+    {
+        GameObject skillObj = new(skill.SkillName);
+        skillObj.transform.SetParent(transform, worldPositionStays: false);
+
+        AttackStats atkStatsInstance = skillObj.AddComponent<AttackStats>();
+        atkStatsInstance.AtkStats = skill;
+
+        skillObj.AddComponent<BasicSkillSlot>().Initialize(playerStats.PlayerUI.basicBar, atkStatsInstance);
+    }
+
+    public void AddSkill(SkillStatsScriptableObject skill)
     {
         // Check if already owned
 
@@ -43,7 +53,7 @@ public class PlayerInventory : MonoBehaviour
                 atkStatsInstance.AtkStats = attackSkill;
 
                 attackSlots.Add(skillObj);
-                return true;
+                playerStats.PlayerUI.inventoryUI.AddAttackSlot(atkStatsInstance);
             }
         }
         else if (skill.SkillType == SkillType.Attribute)
@@ -60,11 +70,8 @@ public class PlayerInventory : MonoBehaviour
                 attriStatsInstance.PlayerStats = playerStats;
 
                 attributeSlots.Add(skillObj);
-                return true;
+                playerStats.PlayerUI.inventoryUI.AddAttributeSlot(attriStatsInstance);
             }
         }
-
-        // Inventory full
-        return false;
     }
 }
