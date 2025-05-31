@@ -3,6 +3,7 @@ using static AllEnums;
 
 public class AttackData
 {
+    public string name;
     public ElementalType element;
     public float rawDamage;
     public float totalDamage;
@@ -23,7 +24,8 @@ public class AttackData
         critDmg = playerStats.currentCritDmg;
         totalDamage = rawDamage * (Random.value < critRate ? critDmg : 1); // crit chance already set
         isCrit = totalDamage > rawDamage;
-        
+
+        name = attackStats.AtkStats.SkillName;
         element = attackStats.AtkStats.ElementalType;
         pierce = attackStats.currentPierce;
         speed = attackStats.currentPierce;

@@ -1999,6 +1999,7 @@ MonoBehaviour:
   immunityFlash: {fileID: 941714253}
   invincibilityTimer: 0
   isInvincible: 0
+  tookDamageThisFrame: 0
   currentMaxHealth: 0
   currentHealth: 0
   currentMovementSpeed: 0

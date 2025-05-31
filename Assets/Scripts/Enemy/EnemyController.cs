@@ -30,8 +30,6 @@ public class EnemyController : MonoBehaviour
         mvt = player.position - transform.position;
         animate.vertical = (int) mvt.y;
         animate.horizontal = (int) mvt.x;
-
-        enemyStats.CheckIFrame();
     }
 
     void FixedUpdate()
@@ -54,7 +52,8 @@ public class EnemyController : MonoBehaviour
     {
         animate.attack = true;
         canAttack = false;
-        player.TakeDamage(enemyStats.currentDamage);
+        player.TakeDamage(enemyStats.currentDamage, enemyStats.EnemStats.EntityPrefab.name);
+        Debug.Log(enemyStats.EnemStats.EntityPrefab.name);
 
         yield return new WaitForSeconds(enemyStats.currentAttackSpeed);
         canAttack = true;

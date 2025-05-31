@@ -24,7 +24,7 @@ public class EnemyStats : LivingEntityStats
         // need to take into account for elemental weakness/resistance
         float actualDamage = attackData.totalDamage * GameWorld.Instance.GetElementalDamageModifier(attackData.element, enemStats.EnemyType);
         damageIndicator.IsCrit = attackData.isCrit;
-        TakeDamage(actualDamage);
+        TakeDamage(actualDamage, attackData.name);
     }
 
     protected override void AdjustHealth(float value)

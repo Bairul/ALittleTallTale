@@ -42,7 +42,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         PlayerMovement();
-        playerStats.CheckIFrame();
     }
 
     // FixedUpdate is called at fixed intervals

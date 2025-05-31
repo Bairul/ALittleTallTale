@@ -33,6 +33,11 @@ public class EnemiesManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        spawnTimer = spawnInterval;
+    }
+
     public void Register(GameObject enemy) => ActiveEnemies.Add(enemy);
     public void Unregister(GameObject enemy) => ActiveEnemies.Remove(enemy);
 

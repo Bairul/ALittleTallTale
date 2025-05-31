@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class LivingEntityStats : MonoBehaviour
@@ -8,6 +9,10 @@ public abstract class LivingEntityStats : MonoBehaviour
     [SerializeField] private ImmunityFlash immunityFlash;
     [HideInInspector] public float invincibilityTimer;
     [HideInInspector] public bool isInvincible;
+    private Dictionary<string, int> hitCountPerSource;
+    private float accumulatedDamage;
+    private bool tookDamageThisFrame;
+
 
     // current stats
     [HideInInspector] public float currentMaxHealth;
@@ -15,7 +20,9 @@ public abstract class LivingEntityStats : MonoBehaviour
     [HideInInspector] public float currentMovementSpeed;
     [HideInInspector] public float currentDamage;
     [HideInInspector] public float currentAttackSpeed;
-    
+    [HideInInspector] public float currentDamageFallOff = 0.1f;
+    [HideInInspector] public float currentDamageMaxFallOff = 0.4f;
+
 
     protected virtual void Awake()
     {
@@ -26,9 +33,10 @@ public abstract class LivingEntityStats : MonoBehaviour
         currentAttackSpeed = stats.AttackSpeed;
         invincibilityTimer = stats.IFrameDuration;
         isInvincible = false;
+        hitCountPerSource = new Dictionary<string, int>();
     }
 
-    public void CheckIFrame()
+    private void CheckIFrame()
     {
         if (!isInvincible) return;
 
@@ -44,14 +52,14 @@ public abstract class LivingEntityStats : MonoBehaviour
 
     private void CheckHealth()
     {
-        if (currentHealth <= 0) 
+        if (currentHealth <= 0)
         {
             Kill();
         }
         else
         {
-            invincibilityTimer = stats.IFrameDuration;
             isInvincible = true;
+            invincibilityTimer = stats.IFrameDuration;
             immunityFlash.Flash(stats.IFrameDuration);
         }
     }
@@ -66,12 +74,42 @@ public abstract class LivingEntityStats : MonoBehaviour
         if (amount > 0) AdjustHealth(amount);
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, string source)
     {
         if (isInvincible) return;
 
-        AdjustHealth(-damage);
-        CheckHealth();
+        // Track number of hits from this source
+        if (!hitCountPerSource.ContainsKey(source))
+        {
+            hitCountPerSource[source] = 1;
+        }
+        else
+        {
+            hitCountPerSource[source]++;
+        }
+
+        int hitNumber = hitCountPerSource[source];
+        float reductionFactor = Mathf.Max(1f - currentDamageFallOff * (hitNumber - 1), currentDamageMaxFallOff);
+        float adjustedDamage = damage * reductionFactor;
+
+        accumulatedDamage += adjustedDamage;
+        tookDamageThisFrame = true;
+    }
+
+
+    void LateUpdate()
+    {
+        CheckIFrame();
+
+        if (tookDamageThisFrame)
+        {
+            AdjustHealth(-accumulatedDamage);
+            CheckHealth();
+
+            tookDamageThisFrame = false;
+            accumulatedDamage = 0f;
+            hitCountPerSource.Clear();
+        }
     }
 
     protected abstract void Kill();
