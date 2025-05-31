@@ -17,7 +17,7 @@ MonoBehaviour:
   skillType: 2
   skillIcon: {fileID: 2051801623, guid: 01bd976736f80504d89ca7879f144f0f, type: 3}
   dashSpeed: 10
-  dashDistance: 0
+  dashDistance: 2
   dashCooldown: 4
   dashDuration: 0.25
   dashBehavior: {fileID: 11400000, guid: 3e5177bcb8c755341b6055bdb2b11742, type: 2}

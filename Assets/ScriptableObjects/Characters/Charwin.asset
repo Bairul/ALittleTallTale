@@ -33,3 +33,4 @@ MonoBehaviour:
     maxLevel: 5
     experienceCap: 15
   basicAttack: {fileID: 11400000, guid: 543ba56d27dc1c54d8aeb0819f3eb010, type: 2}
+  dashSkill: {fileID: 11400000, guid: c4953415527adeb4799138f0d612c448, type: 2}

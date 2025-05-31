@@ -3,14 +3,20 @@ using UnityEngine;
 
 public class EntityDashController : MonoBehaviour
 {
-    [SerializeField]
     private DashStatsScriptableObject dashStats;
+    private PlayerController playerController;
     private bool canDash;
     private float dashCooldownTimer;
 
     void Awake()
     {
         canDash = true;
+    }
+
+    void Start()
+    {
+        playerController = GetComponent<PlayerController>();
+        dashStats = PlayerManager.Instance.Stats.CharStats.DashSkill;
     }
 
     void Update()
@@ -28,12 +34,11 @@ public class EntityDashController : MonoBehaviour
     private IEnumerator InitiateDash()
     {
         canDash = false;
-        PlayerController player = GetComponent<PlayerController>();
-        player.canMove = false;
-        dashStats.DashBehavior.Dash(player, dashStats);
+        playerController.canMove = false;
+        dashStats.DashBehavior.Dash(playerController, dashStats);
 
         yield return new WaitForSeconds(dashStats.DashDuration);
-        player.canMove = true;
+        playerController.canMove = true;
         canDash = true;
         dashCooldownTimer = dashStats.DashCooldown;
     }

@@ -22,7 +22,7 @@ public class AttackStats : MonoBehaviour
         currentMovementSpeed = attackStats.AttackMovementSpeed;
         currentPierce = attackStats.AttackPierce;
         currentDamage = attackStats.AttackDamage;
-        currentCooldown = attackStats.AttackCooldown;
+        currentCooldown = 0f;
         currentRange = attackStats.AttackRange;
         currentLifespan = attackStats.AttackLifespan;
         currentCount = attackStats.AttackCount;

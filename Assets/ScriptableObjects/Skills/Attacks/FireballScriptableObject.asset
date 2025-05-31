@@ -20,11 +20,11 @@ MonoBehaviour:
   elementalType: 1
   attackDamage: 10
   attackPierce: 2
-  attackMovementSpeed: 5
+  attackMovementSpeed: 3
   attackRange: 2
-  attackLifespan: 4
-  attackCooldown: 3
+  attackLifespan: 2
+  attackCooldown: 4
   attackCount: 2
   attackSpread: 10
-  attackSpawnRange: 0.2
+  attackSpawnRange: 1
   spawnBehavior: {fileID: 11400000, guid: f69059c0270472b44ba00c89a03ab9a5, type: 2}

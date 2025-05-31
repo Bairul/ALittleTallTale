@@ -33,4 +33,8 @@ public class CharacterStatsScriptableObject : LivingEntityStatsScriptableObject
     [SerializeField]
     private SkillStatsScriptableObject basicAttack;
     public SkillStatsScriptableObject BasicAttack { get => basicAttack; private set => basicAttack = value; }
+
+    [SerializeField]
+    private DashStatsScriptableObject dashSkill;
+    public DashStatsScriptableObject DashSkill { get => dashSkill; private set => dashSkill = value; }
 }

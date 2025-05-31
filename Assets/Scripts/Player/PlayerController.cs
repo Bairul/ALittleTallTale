@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D Rigidbody { get => rgbd2d; }
     private Vector2 mvt;
 
-    public bool canMove;
+    [HideInInspector] public bool canMove;
 
     // Awake is called before Start. Frequently used to get internal components and initialize fields
     void Awake()
